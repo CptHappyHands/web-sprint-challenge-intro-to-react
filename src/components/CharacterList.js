@@ -5,8 +5,9 @@ import Character from './Character'
 export default function CharEl(props) {
     const { chars } = props
     return (
-        <div className = 'body'>
-            {chars.map(char => <Character key={char.id} newData={char}/>)}
+        <div  className = 'body'>
+            {chars.map(char => <Character key={char.name} newData={char}/>)}
+
         </div>
     )
 }

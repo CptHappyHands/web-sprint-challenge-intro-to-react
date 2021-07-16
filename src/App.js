@@ -12,6 +12,10 @@ export default function App() {
   // sync up with, if any.
   const char_API = `https://swapi.dev/api/people` //made in to a const so I can reuse later if needed
   const [newData, setNewData] = useState([])
+  const [open, setOpen] = useState(false)
+
+  
+  
 
   useEffect(() => {
     axios.get(char_API)
@@ -21,12 +25,14 @@ export default function App() {
       return () => console.log('Cleanup');
     })
     .catch(err => console.log(err))
-  })
+  }, [char_API])
 
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-      <CharacterList  chars={newData}/>
+      
+     <CharacterList  chars={newData}/>
+
     </div>
   );
 }
