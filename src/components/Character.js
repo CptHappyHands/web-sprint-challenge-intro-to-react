@@ -1,6 +1,17 @@
 import React, { useState } from 'react'
 // import Button from './Button'
+import styled from 'styled-components'
 
+const StyledDiv = styled.div`
+text-align: left;
+`
+
+const StyledButton = styled.button`
+&:hover {transform: scale(1.15)
+}
+background-color: yellow;
+text-align: left;
+`
 export default function Character( {newData}) {
     console.log(newData)
     
@@ -10,8 +21,14 @@ export default function Character( {newData}) {
         setOpen(wasOpened => !wasOpened)
     }
     return (
+        
         <div className='character-name'>
-            <h3>Name: {newData.name}</h3>
+            <StyledDiv>
+            <h3>Name: {newData.name}<StyledButton>
+            <button onClick={toggle}>+</button>
+            </StyledButton></h3>
+            </StyledDiv>
+            <StyledDiv>
             {open && (
             <div className='character-info'>
             <p>Height: {newData.height}</p>
@@ -24,7 +41,7 @@ export default function Character( {newData}) {
             <p>Home World: {newData.homeworld}</p>
             </div>
             )}
-            <button onClick={toggle}></button>
+            </StyledDiv>
         </div>
     )
 }
